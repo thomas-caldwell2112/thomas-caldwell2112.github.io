@@ -1,0 +1,12 @@
+name: "bio-website"
+navbar:
+  title: "490R"
+  left:
+    - text: "Home"
+      href: index.html
+    - text: "Exam_3"
+      href: exam_3.html
+    - text: "Final"
+      href: final.html
+    - text: "About Me"
+      href: about_me.html

@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Exam_3</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">490R</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="exam_3.html">Exam_3</a>
+</li>
+<li>
+  <a href="final.html">Final</a>
+</li>
+<li>
+  <a href="about_me.html">About Me</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Exam_3</h1>
+
+</div>
+
+
+<div id="data" class="section level3">
+<h3>Data</h3>
+<p>Our first step is to import the data and clean it up.</p>
+<pre class="r"><code>data(&quot;mtcars&quot;)
+mtcars$gear = factor(mtcars$gear)
+mtcars$vs = factor(mtcars$vs)
+mtcars$am = factor(mtcars$am)
+mtcars$carb = factor(mtcars$carb)
+mtcars$cyl = factor(mtcars$cyl)</code></pre>
+</div>
+<div id="explore-data" class="section level3">
+<h3>Explore Data</h3>
+<p>Now we will explore the data and see what correlations there might be.</p>
+<pre class="r"><code>ggpairs(mtcars)</code></pre>
+<p><img src="exam_3_files/figure-html/explore-1.png" width="672" /></p>
+</div>
+<div id="models" class="section level3">
+<h3>Models</h3>
+<p>Based on those graphs we made a few models to be tested.</p>
+<pre class="r"><code>mod1 = lm(mpg ~ cyl+disp+hp+drat+wt+qsec+vs+am+gear+carb ,mtcars)
+mod2 = lm(mpg ~ cyl + hp + wt + am ,mtcars)
+mod3 = lm(mpg ~ wt + qsec + am ,mtcars)</code></pre>
+<p>Now let’s summarize them to see how good they are.</p>
+<pre class="r"><code>summary(mod1)</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = mpg ~ cyl + disp + hp + drat + wt + qsec + vs + 
+##     am + gear + carb, data = mtcars)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -3.5087 -1.3584 -0.0948  0.7745  4.6251 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)  
+## (Intercept) 23.87913   20.06582   1.190   0.2525  
+## cyl6        -2.64870    3.04089  -0.871   0.3975  
+## cyl8        -0.33616    7.15954  -0.047   0.9632  
+## disp         0.03555    0.03190   1.114   0.2827  
+## hp          -0.07051    0.03943  -1.788   0.0939 .
+## drat         1.18283    2.48348   0.476   0.6407  
+## wt          -4.52978    2.53875  -1.784   0.0946 .
+## qsec         0.36784    0.93540   0.393   0.6997  
+## vs1          1.93085    2.87126   0.672   0.5115  
+## am1          1.21212    3.21355   0.377   0.7113  
+## gear4        1.11435    3.79952   0.293   0.7733  
+## gear5        2.52840    3.73636   0.677   0.5089  
+## carb2       -0.97935    2.31797  -0.423   0.6787  
+## carb3        2.99964    4.29355   0.699   0.4955  
+## carb4        1.09142    4.44962   0.245   0.8096  
+## carb6        4.47757    6.38406   0.701   0.4938  
+## carb8        7.25041    8.36057   0.867   0.3995  
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 2.833 on 15 degrees of freedom
+## Multiple R-squared:  0.8931, Adjusted R-squared:  0.779 
+## F-statistic:  7.83 on 16 and 15 DF,  p-value: 0.000124</code></pre>
+<pre class="r"><code>summary(mod2)</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = mpg ~ cyl + hp + wt + am, data = mtcars)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -3.9387 -1.2560 -0.4013  1.1253  5.0513 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) 33.70832    2.60489  12.940 7.73e-13 ***
+## cyl6        -3.03134    1.40728  -2.154  0.04068 *  
+## cyl8        -2.16368    2.28425  -0.947  0.35225    
+## hp          -0.03211    0.01369  -2.345  0.02693 *  
+## wt          -2.49683    0.88559  -2.819  0.00908 ** 
+## am1          1.80921    1.39630   1.296  0.20646    
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 2.41 on 26 degrees of freedom
+## Multiple R-squared:  0.8659, Adjusted R-squared:  0.8401 
+## F-statistic: 33.57 on 5 and 26 DF,  p-value: 1.506e-10</code></pre>
+<pre class="r"><code>summary(mod3)</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = mpg ~ wt + qsec + am, data = mtcars)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -3.4811 -1.5555 -0.7257  1.4110  4.6610 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)   9.6178     6.9596   1.382 0.177915    
+## wt           -3.9165     0.7112  -5.507 6.95e-06 ***
+## qsec          1.2259     0.2887   4.247 0.000216 ***
+## am1           2.9358     1.4109   2.081 0.046716 *  
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 2.459 on 28 degrees of freedom
+## Multiple R-squared:  0.8497, Adjusted R-squared:  0.8336 
+## F-statistic: 52.75 on 3 and 28 DF,  p-value: 1.21e-11</code></pre>
+<p>Then let’s diagnose them.</p>
+<pre class="r"><code>par(mfrow=c(2,2)) #to show graphs in 2x2 grids
+plot(mod1)</code></pre>
+<p><img src="exam_3_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<pre class="r"><code>plot(mod2)</code></pre>
+<p><img src="exam_3_files/figure-html/unnamed-chunk-3-2.png" width="672" /></p>
+<pre class="r"><code>plot(mod3)</code></pre>
+<p><img src="exam_3_files/figure-html/unnamed-chunk-3-3.png" width="672" /></p>
+<p>Based on all that model 2 is looking like the best model.</p>
+</div>
+<div id="test-model" class="section level3">
+<h3>Test Model</h3>
+<p>First we need to make a dataframe with the variables just from mod2.</p>
+<pre class="r"><code>df = data.frame(cyl = mtcars$cy, hp = mtcars$hp, wt = mtcars$wt, am =mtcars$am, row.names = row.names(mtcars))</code></pre>
+<p>Then we will add predictions to the dataframe.</p>
+<pre class="r"><code>mtcars$pred = predict(mod2, df)</code></pre>
+<p>Predictions compared to actual (two seperate visualizations).</p>
+<pre class="r"><code>ggplot(mtcars, aes(x=row.names(mtcars)))+
+  geom_point(aes(y=mpg, color=&quot;mpg&quot;))+
+  geom_point(aes(y=pred, color=&quot;pred&quot;))+
+  theme(axis.text.x = element_text(angle = 50, hjust = 1))</code></pre>
+<p><img src="exam_3_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<pre class="r"><code>ggplot(mtcars, aes(x=pred, y=mpg)) + geom_point()</code></pre>
+<p><img src="exam_3_files/figure-html/unnamed-chunk-6-2.png" width="672" /></p>
+<p>Looks pretty good to me, let’s see how the model holds up when we split up the data and test it on seperate sets.</p>
+<p>We start by splitting the dataset in half.</p>
+<pre class="r"><code>set.seed(666)
+set = caret::createDataPartition(mtcars$mpg, p=.5)
+set = set$Resample1
+train = mtcars[set,]
+test = mtcars[-set,]</code></pre>
+<p>Then we will train the model using half of the data set.</p>
+<pre class="r"><code>mod2_cv = lm(data=train, formula = formula(mod2))</code></pre>
+<p>Now with the trained model we will make predictions on the other half of the dataset and add them to it.</p>
+<pre class="r"><code>test$pred = predict(mod2_cv, test)</code></pre>
+<p>Now let’s plot the predicted to the actual</p>
+<pre class="r"><code>ggplot(test,aes(x=row.names(test)))+
+  geom_point(aes(y=mpg, color=&quot;mpg&quot;))+
+  geom_point(aes(y=pred, color=&quot;pred&quot;))+
+  theme(axis.text.x = element_text(angle = 50, hjust = 1))</code></pre>
+<p><img src="exam_3_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<p>Lets compare the residuals and summaries of the trained model to the original.</p>
+<pre class="r"><code>mean(residuals(mod2)^2)</code></pre>
+<pre><code>## [1] 4.71955</code></pre>
+<pre class="r"><code>mean((test$pred - test$mpg)^2)</code></pre>
+<pre><code>## [1] 5.998102</code></pre>
+<pre class="r"><code>summary(mod2)</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = mpg ~ cyl + hp + wt + am, data = mtcars)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -3.9387 -1.2560 -0.4013  1.1253  5.0513 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) 33.70832    2.60489  12.940 7.73e-13 ***
+## cyl6        -3.03134    1.40728  -2.154  0.04068 *  
+## cyl8        -2.16368    2.28425  -0.947  0.35225    
+## hp          -0.03211    0.01369  -2.345  0.02693 *  
+## wt          -2.49683    0.88559  -2.819  0.00908 ** 
+## am1          1.80921    1.39630   1.296  0.20646    
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 2.41 on 26 degrees of freedom
+## Multiple R-squared:  0.8659, Adjusted R-squared:  0.8401 
+## F-statistic: 33.57 on 5 and 26 DF,  p-value: 1.506e-10</code></pre>
+<pre class="r"><code>summary(mod2_cv)</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = formula(mod2), data = train)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -3.9403 -0.7894  0.0049  0.8223  4.4488 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) 35.81724    4.75565   7.532 1.15e-05 ***
+## cyl6        -2.60425    2.15679  -1.207   0.2526    
+## cyl8        -1.54020    3.28708  -0.469   0.6485    
+## hp          -0.03057    0.02024  -1.510   0.1591    
+## wt          -3.21201    1.65134  -1.945   0.0778 .  
+## am1          1.21814    2.53562   0.480   0.6403    
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 2.447 on 11 degrees of freedom
+## Multiple R-squared:  0.8787, Adjusted R-squared:  0.8235 
+## F-statistic: 15.93 on 5 and 11 DF,  p-value: 0.0001025</code></pre>
+<p>Final comparison of the two models.</p>
+<pre class="r"><code>df = gather_predictions(mtcars, mod2,mod2_cv)
+
+ggplot(df, aes(x=mpg)) +
+  geom_point(aes(y=mpg)) +
+  geom_smooth(method = &quot;lm&quot;,aes(linetype=model,y=pred))</code></pre>
+<p><img src="exam_3_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+</div>
+<div id="conclusion" class="section level3">
+<h3>Conclusion</h3>
+<p>Model 2 was the best model I was able to come up with, its R^2 value was 0.8659 while the version of model 2 trained for a smaller data set was 0.8787. While the residuals increased it wasn’t by too much. The most useful indicator of the best model was the 4 graphs I made of each. Further on I tried to explain the best with graphs but after you have 2 or 3 variables it’s hard to visualize on a graph. Training it with just half the dataset is also useful to see if the model will adapt to different data or if it’s too specific to the current data.</p>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
